@@ -15,39 +15,90 @@ _Write your own GitHub JavaScript Action and automate customized tasks unique to
 </header>
 
 <!--
-  <<< Author notes: Finish >>>
-  Review what we learned, ask for feedback, provide next steps.
+  <<< Author notes: Step 1 >>>
+  Choose 3-5 steps for your course.
+  The first step is always the hardest, so pick something easy!
+  Link to docs.github.com for further explanations.
+  Encourage users to open new tabs for steps!
 -->
 
-## Finish
+## Step 1: Initialize a new JavaScript project
 
-<img src=https://octodex.github.com/images/poptocat_v2.png alt=celebrate width=300 align=right>
+_Welcome to the course :tada:_
 
-### Congratulations, you've completed this course!
+### Configuring a workflow
 
-In this course, you've learned a lot about developing custom actions using JavaScript and Actions Toolkit.
+Actions are enabled on your repository by default, but we still have to tell our repository to use them. We do this by creating a workflow file in our repository.
 
-## Publishing your actions
+A **workflow** file can be thought of as the recipe for automating a task. They house the start to finish instructions, in the form of `jobs` and `steps`, for what should happen based on specific triggers.
 
-Publishing your actions is a great way to help others in your team and across the GitHub community. Although actions do not need to be published to be consumed, by adding them to the marketplace you make them easier to find.
+Your repository can contain multiple **workflow** files that carry out a wide variety of tasks. It is important to consider this when deciding on a name for your **workflow**. The name you choose should reflect the tasks being performed.
 
-Some notable actions you will find on the marketplace are:
+_In our case, we will use this one **workflow** file for many things, which leads us to break this convention for teaching purposes._
 
-- [Actions for Discord](https://github.com/marketplace/actions/actions-for-discord)
-- [GitHub Action for Slack](https://github.com/marketplace/actions/github-action-for-slack)
-- [Jekyll action](https://github.com/marketplace/actions/jekyll-action)
-- [Run Jest](https://github.com/marketplace/actions/run-jest)
+Read more about [workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#choosing-the-type-of-actions-for-your-workflow)
 
-And that just scratches the surface of the 1600+ and counting actions you will find on the marketplace
+## On to your development environment
 
-Follow [this guide](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/publishing-actions-in-github-marketplace#publishing-an-action) to learn how to publish your actions to the GitHub Marketplace
+Our JavaScript actions are going to leverage the [GitHub ToolKit](https://github.com/actions/toolkit) for developing GitHub Actions.
 
-### What's next?
+This is an external library that we will install using `npm` which means that you will need [Node.js](https://nodejs.org/) installed.
 
-- [Take another GitHub Skills course](https://github.com/githubskills).
-- We'd love to hear what you thought of this course in our [discussion board](https://github.com/orgs/skills/discussions/categories/write-javascript-actions).
-- [Read the GitHub Getting Started docs](https://docs.github.com/en/get-started).
-- To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
+We find writing actions to be easier from a local environment vs trying to do everything right here in the repository. Doing these steps locally allows you to use the editor of your choice so that you have all the extensions and snippets you are used to when writing code.
+
+If you do not have a preferred environment then we suggest following along exactly as you see on the screen, which means you'll need to install [Visual Studio Code](https://code.visualstudio.com/).
+
+## Don't forget to set up your workstation
+
+Most of your work going forward will take place away from your Skills repository, so before continuing with the course ensure you have the following installed on your **local machine**.
+
+1. [ ] [Node.js](https://nodejs.org)
+2. [ ] [Visual Studio Code](https://code.visualstudio.com/) or your editor of choice
+3. [ ] [Git](https://git-scm.com/)
+
+### :keyboard: Activity 1: Initialize a new JavaScript project
+
+Once you have the necessary tools installed locally, follow these steps to begin creating your first action.
+
+1. Open the **Terminal** (Mac and Linux) or **Command Prompt** (Windows) on your local machine
+2. Clone your Skills repo to your local machine:
+   ```shell
+   git clone <this repository URL>.git
+   ```
+3. Navigate to the folder you just cloned:
+   ```shell
+   cd <local folder with cloned repo>
+   ```
+4. We are using branch called `main`.
+   ```shell
+   git switch main
+   ```
+5. Create a new folder for our actions files:
+   ```shell
+   mkdir -p .github/actions/joke-action
+   ```
+6. Navigate to the `joke-action` folder you just created:
+   ```shell
+   cd .github/actions/joke-action
+   ```
+7. Initialize a new project:
+   ```shell
+   npm init -y
+   ```
+8. Install the **request**, **request-promise** and **@actions/core** dependencies using `npm` from the [GitHub ToolKit](https://github.com/actions/toolkit):
+   ```shell
+   npm install --save request request-promise @actions/core
+   ```
+9. Commit those newly added files,we will remove the need to upload **node_modules** in a later step:
+   ```shell
+   git add .
+   git commit -m 'add project dependencies'
+   ```
+10. Push your changes to your repository:
+    ```shell
+    git push
+    ```
+11. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
 
 <footer>
 
